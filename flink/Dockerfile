@@ -11,8 +11,7 @@ RUN yum -y install zulu-8 nss_wrapper gettext
 RUN useradd -d /opt/flink --uid 1001 -M flink
 
 RUN cd /opt && \
-	# curl -o flink.tgz http://mirror.hosting90.cz/apache/flink/flink-$FLINK_VERSION/flink-$FLINK_VERSION-bin-hadoop27-scala_2.11.tgz && \
-	curl -o flink.tgz http://people.apache.org/~rmetzger/flink-1.2.0-rc3/flink-1.2.0-bin-hadoop27-scala_2.11.tgz && \
+	curl -o flink.tgz http://mirror.hosting90.cz/apache/flink/flink-$FLINK_VERSION/flink-$FLINK_VERSION-bin-hadoop27-scala_2.11.tgz && \
 	tar xf flink.tgz && \
 	mv flink-$FLINK_VERSION flink && \
 	chown -R flink:root flink && \
