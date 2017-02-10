@@ -27,13 +27,13 @@ export NSS_WRAPPER_GROUP=/etc/group
 
 if [ "$1" == "jobs" ]; then
   echo "Starting Job Manager"
-  sed -i -e "s/jobmanager.rpc.address: localhost/jobmanager.rpc.address: $(getent hosts flink-jobs | cut -d' ' -f1)/g" conf/flink-conf.yaml
+  sed -i -e "s/jobmanager.rpc.address: localhost/jobmanager.rpc.address: $(getent hosts flink | cut -d' ' -f1)/g" conf/flink-conf.yaml
   echo "blob.server.port: 50101" >> conf/flink-conf.yaml
   echo "user.name: flink" >> conf/flink-conf.yaml
   ./bin/flink-daemon.sh start jobmanager --configDir conf --executionMode CLUSTER #--host 0.0.0.0 #"$(hostname -f)"
   tail -f /dev/null
 elif [ "$1" == "tasks" ]; then
-  sed -i -e "s/jobmanager.rpc.address: localhost/jobmanager.rpc.address: $(getent hosts flink-jobs | cut -d' ' -f1)/g" conf/flink-conf.yaml
+  sed -i -e "s/jobmanager.rpc.address: localhost/jobmanager.rpc.address: $(getent hosts flink | cut -d' ' -f1)/g" conf/flink-conf.yaml
   echo "blob.server.port: 50101" >> conf/flink-conf.yaml
   echo "user.name: flink" >> conf/flink-conf.yaml
   ./bin/flink-daemon.sh start taskmanager --configDir conf
@@ -41,4 +41,3 @@ elif [ "$1" == "tasks" ]; then
 else
     $@
 fi
-

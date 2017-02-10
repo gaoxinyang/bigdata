@@ -1,24 +1,21 @@
 kind: ReplicationController
 apiVersion: v1
 metadata:
-  name: tasks
+  name: flink-tasks
 spec:
   replicas: 1
   selector:
-    component: tasks
+    component: flink-tasks
   template:
     metadata:
       labels:
-        component: tasks
+        component: flink-tasks
     spec:
       containers:
-        - name: tasks
+        - name: flink-tasks
           image: mjelen/flink:latest
           args: ["tasks"]
           ports:
             - containerPort: 6121
             - containerPort: 6122
             - containerPort: 50101
-          resources:
-            requests:
-              cpu: 100m

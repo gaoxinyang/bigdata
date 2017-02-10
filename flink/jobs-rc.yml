@@ -1,23 +1,20 @@
 kind: ReplicationController
 apiVersion: v1
 metadata:
-  name: flink-jobs
+  name: flink
 spec:
   replicas: 1
   selector:
-    component: flink-jobs
+    component: flink
   template:
     metadata:
       labels:
-        component: flink-jobs
+        component: flink
     spec:
       containers:
-        - name: flink-jobs
+        - name: flink
           image: mjelen/flink:latest
           args: ["jobs"]
           ports:
             - containerPort: 6123
             - containerPort: 8081
-          env:
-            - name: HADOOP_USER_NAME
-              value: flink

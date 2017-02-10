@@ -49,3 +49,15 @@ up/down it is possible to add/remove worker nodes.
 
 To access the web management console, expose the 8081 port on the JobsManager
 service.
+
+## Zeppelin
+
+Zeppelin notebook can be deployed to OpenShift
+
+```
+oc new-app mjelen/zeppelin
+```
+
+To connect Zeppelin to existing Flink instance, open `Interpreters` in top
+right menu, add new one in the Flink group with remove execution and use
+`flink` as host and `6123` as port.

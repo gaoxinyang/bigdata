@@ -1,10 +1,10 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: flink-jobs
+  name: flink
 spec:
   selector:
-    component: flink-jobs
+    component: flink
   ports:
     - port: 6123
       targetPort: 6123
